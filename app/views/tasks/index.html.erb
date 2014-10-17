@@ -1,5 +1,8 @@
 <div class="jumbotron">   
-	<h1>Minhas Tarefas</h1>
+	<h1>Minhas Tarefas
+		<br>
+		<small><%= current_user.email %></small>
+	</h1>
 </div>
 <div>
 		<% if @tasks.present? %>
