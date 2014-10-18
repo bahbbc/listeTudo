@@ -1,0 +1,28 @@
+<div class="jumbotron">   
+	<h1>Minhas Listas
+		<br>
+		<small><%= current_user.email %></small>
+	</h1>
+</div>
+<div>
+		<% if @lists.present? %>
+			<table class="table">
+				<tr>
+			    <th>Tarefa</th>
+			    <th>Status</th>
+			    <th>Ação destrutiva!</th>
+			  </tr>
+			<% @lists.each do |list| %>
+			  <tr>  
+					<td><%= link_to list.name, list_tasks_path(list) %></td>
+					<td><%= link_to 'Remover', list_path(list),
+                    method: :delete, data: { confirm: 'Quer mesmo deletar essa lista? Todas as tarefas irão junto!' }, :class => "btn btn-default btn-xs" %>
+              <%= link_to 'Editar', list_path(list), :class => "btn btn-default btn-xs" %>
+				</tr>
+			<% end %>	
+			</table>
+		<% else %>
+			<p>Adicione novas listas!</p>
+		<% end %>	
+		<%= link_to 'Adicionar lista', new_list_path, :class => "btn btn-default" %>  
+</div>
