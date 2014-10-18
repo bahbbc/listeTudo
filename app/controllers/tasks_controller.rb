@@ -1,35 +1,41 @@
 class TasksController < ApplicationController
+	
 	def index
-		@tasks = Task.all
+		@tasks = current_user.tasks
+		@list = @tasks.first.list
+		@task = Task.new
 	end
 
 	def create   
-		@tasks = Task.new(task_params)
- 
-  	@tasks.save
-		redirect_to tasks_path
+ 		@list = List.find(params[:list_id])
+ 		@task = @list.tasks.new(task_params)
+
+  	@task.save
+		redirect_to list_tasks_url(@list)
 	end
 
 	def destroy
-	  @tasks = Task.find(params[:id])
+		@list = List.find(params[:list_id])
+	  @tasks = current_user.tasks.find(params[:id])
 	  @tasks.destroy
-	 
-	  redirect_to tasks_path
+
+	  redirect_to list_tasks_url(@list)
 	end
 
 	def edit 
-		@task = Task.find(params[:id]) 
+		@task = current_user.tasks.find(params[:id]) 
 	end
 
 	def update
-		@task = Task.find(params[:id])
+		@list = List.find(params[:list_id])
+		@task = current_user.tasks.find(params[:id])
 		@task.update(:status => true)
 
-		redirect_to tasks_path
+		redirect_to list_tasks_url(@list)
 	end
 
 	private
-	def task_params
-		params.require(:task).permit(:title, :status)
-	end
+		def task_params
+			params.require(:task).permit(:title, :status, :list_id)
+		end
 end

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+	
   devise_for :users
-  resources :tasks
+  resources :lists do
+	  resources :tasks
+	end
 
-  root 'tasks#index' 
+  root 'lists#index' 
 end

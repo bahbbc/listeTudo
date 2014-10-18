@@ -1,3 +1,5 @@
 class Task < ActiveRecord::Base
-	validates_presence_of :title
+	belongs_to :list
+	 
+	validates :title, presence: true
 end
