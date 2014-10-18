@@ -1,0 +1,8 @@
+<div class="jumbotron">   
+	<h1>Listas públicas</h1>
+</div>
+<div>
+	<% if @lists.present? %>
+		<%= render "shared/list_all", lists: @lists%>
+	<% end %>
+</div>

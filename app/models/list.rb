@@ -3,4 +3,6 @@ class List < ActiveRecord::Base
 	has_many :tasks , :dependent => :destroy
 
 	validates :name, :user, presence: true
+
+	scope :public_list, -> { where(private: false) }
 end

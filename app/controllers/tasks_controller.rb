@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 	
 	def index
 		@tasks = current_user.tasks
-		@list = @tasks.first.list
+		@list = List.find(params[:list_id])
 		@task = Task.new
 	end
 
@@ -16,8 +16,8 @@ class TasksController < ApplicationController
 
 	def destroy
 		@list = List.find(params[:list_id])
-	  @tasks = current_user.tasks.find(params[:id])
-	  @tasks.destroy
+	  task = current_user.tasks.find(params[:id])
+	  task.destroy
 
 	  redirect_to list_tasks_url(@list)
 	end
@@ -28,8 +28,8 @@ class TasksController < ApplicationController
 
 	def update
 		@list = List.find(params[:list_id])
-		@task = current_user.tasks.find(params[:id])
-		@task.update(:status => true)
+		task = current_user.tasks.find(params[:id])
+		task.update(:status => true)
 
 		redirect_to list_tasks_url(@list)
 	end
