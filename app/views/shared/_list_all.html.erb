@@ -2,16 +2,19 @@
 			<tr>
 		    <th>Tarefa</th>
 		    <th>Privacidade</th>
-		    <th>Ação destrutiva!</th>
+		    <th></th>
 		  </tr>
 		<% lists.each do |list| %>
 		  <tr>  
 				<td><%= link_to list.name, list_tasks_path(list) %></td>
 				<td><%= list.private ? 'Privada' : 'Pública' %></td>
-				<td><%= link_to 'Remover', list_path(list),
-                  method: :delete, data: { confirm: 'Quer mesmo deletar essa lista? Todas as tarefas irão junto!' }, :class => "btn btn-default btn-xs" %>
-            <%= link_to 'Editar', list_path(list), :class => "btn btn-default btn-xs" %>
-            <%= link_to 'Tornar pública', list_path(list), method: :patch, :class => "btn btn-default btn-xs" %>
+				<% if list.user == current_user %>
+					<td><%= link_to 'Remover', list_path(list),
+	                  method: :delete, data: { confirm: 'Quer mesmo deletar essa lista? Todas as tarefas irão junto!' }, :class => "btn btn-default btn-xs" %>
+	            <%= link_to 'Editar', list_path(list), :class => "btn btn-default btn-xs" %>
+	            <%= link_to 'Tornar pública', list_path(list), method: :patch, :class => "btn btn-default btn-xs" %>
+	        </td>
+	      <% end %>  
 			</tr>
 		<% end %>	
 		</table>

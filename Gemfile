@@ -17,9 +17,10 @@ gem 'simple_form'
 gem 'devise'
 gem 'responders'
 
-group :development, :test do
+group :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 # Use ActiveModel has_secure_password

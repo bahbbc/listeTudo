@@ -1,16 +1,21 @@
 class TasksController < ApplicationController
 	
 	def index
-		@tasks = current_user.tasks
 		@list = List.find(params[:list_id])
 		@task = Task.new
+
+		if @list.user == current_user || @list.is_public_list
+			@tasks = @list.tasks
+		else
+			head :bad_request
+		end	
 	end
 
 	def create   
  		@list = List.find(params[:list_id])
- 		@task = @list.tasks.new(task_params)
+ 		task = @list.tasks.new(task_params)
 
-  	@task.save
+  	task.save
 		redirect_to list_tasks_url(@list)
 	end
 
