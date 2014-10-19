@@ -7,7 +7,7 @@ class FavoriteListsController < ApplicationController
 
 	def create
 		current_user.favorite_lists.find_or_create_by(list_id: params[:id])	
-		redirect_to public_lists_url, notice: 'Lista Adicionada as favoritas!'
+		redirect_to :back, notice: (t 'favorite_lists.form_favorite_success')
 	end
 
 	def update

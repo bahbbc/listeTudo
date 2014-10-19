@@ -22,8 +22,7 @@ class ListsController < ApplicationController
 	def update
 		list = current_user.lists.find(params[:id])
 		list.update(:private => false)
-
-		redirect_to lists_url
+		redirect_to :back, notice: (t 'public_lists.form_public_success', list_name: list.name)
 	end
 
 	private

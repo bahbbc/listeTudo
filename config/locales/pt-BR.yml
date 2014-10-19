@@ -2,7 +2,7 @@ pt-BR:
   menu:
     favorites: Minhas listas favoritas
     lists: Minhas listas
-    public: Outras listas
+    public: Listas públicas
     log_out: Sair
     title: ListeTudo
   tasks:
@@ -31,6 +31,7 @@ pt-BR:
     make_public: Tornar pública
   public_lists:
     title: Listas Públicas
+    form_public_success: "Agora a lista %{list_name} está pública!"
   links:
     back: Voltar
   general:

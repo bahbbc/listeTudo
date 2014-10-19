@@ -2,9 +2,6 @@
 	<h1><%= t 'public_lists.title' %></h1>
 </div>
 <div>
-	<% if notice.present? %>
-		<p class="alert alert-success" role="alert"><%= notice %></p>
-	<% end %>
 	<% if @lists.present? %>
 		<%= render "shared/list_all", lists: @lists%>
 	<% end %>
