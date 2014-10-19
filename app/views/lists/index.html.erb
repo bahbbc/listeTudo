@@ -10,9 +10,9 @@
 	<% else %>
 		<p><%= t 'general.add_more_lists' %></p>
 	<% end %>
-	  <%= simple_form_for @list, :url => lists_path do |f| %>
+	  <%= simple_form_for @list, url: lists_path do |f| %>
 			<div class="input-group">
-		    <%= f.input_field :name, :placeholder => (t 'lists.new_placeholder'), class: "form-control"%>
+		    <%= f.input_field :name, placeholder: (t 'lists.new_placeholder'), class: "form-control"%>
 		    <span class="input-group-btn">
 		    	<%= f.button :submit, (t 'lists.new'), class: "btn btn-default" %>
 		    </span>

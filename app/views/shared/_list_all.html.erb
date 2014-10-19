@@ -7,14 +7,14 @@
 		<% lists.each do |list| %>
 		  <tr>  
 				<td><%= link_to list.name, list_tasks_path(list) %>&nbsp;&nbsp
-						<%= link_to (t 'generic_list.favorite'), favorite_list_path(list), method: :patch, :class => "btn btn-default btn-xs" %>
+						<%= link_to (t 'generic_list.favorite'), favorite_list_path(list), method: :patch, class: "btn btn-default btn-xs" %>
 				</td>
 				<td><%= list.private ? 'Privada' : 'Pública' %></td>
 				<% if list.user == current_user %>
 					<td><%= link_to (t 'generic_list.remove') , list_path(list),
-	                  method: :delete, data: { confirm: (t 'generic_list.remove_message') }, :class => "btn btn-default btn-xs" %>
+	                  method: :delete, data: { confirm: (t 'generic_list.remove_message') }, class: "btn btn-default btn-xs" %>
 	            <%= link_to 'Editar', list_path(list), :class => "btn btn-default btn-xs" %>
-	            <%= link_to (t 'generic_list.make_public'), list_path(list), method: :patch, :class => "btn btn-default btn-xs" %>
+	            <%= link_to (t 'generic_list.make_public'), list_path(list), method: :patch, class: "btn btn-default btn-xs" %>
 	        </td>
 	      <% end %>  
 			</tr>
