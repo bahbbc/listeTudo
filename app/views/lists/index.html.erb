@@ -1,19 +1,21 @@
 <div class="jumbotron">   
-	<h1>Minhas Listas
+	<h1><%= t 'lists.title' %>
 		<br>
 		<small><%= current_user.email %></small>
 	</h1>
 </div>
 <div>
-		<% if @lists.present? %>
-			<%= render "shared/list_all", lists: @lists%>
-		<% else %>
-			<p>Adicione novas listas!</p>
-		<% end %>	
-
-		<%= simple_form_for @list, :url => lists_path do |f| %>
-			<%= f.input :name, :class => "form-control"%>
-			<%= f.button :submit, "Adicionar lista", :class => "btn btn-default" %>
+	<% if @lists.present? %>
+		<%= render "shared/list_all", lists: @lists%>
+	<% else %>
+		<p><%= t 'general.add_more_lists' %></p>
+	<% end %>
+	  <%= simple_form_for @list, :url => lists_path do |f| %>
+			<div class="input-group">
+		    <%= f.input_field :name, :placeholder => (t 'lists.new_placeholder'), class: "form-control"%>
+		    <span class="input-group-btn">
+		    	<%= f.button :submit, (t 'lists.new'), class: "btn btn-default" %>
+		    </span>
+			</div>
 		<% end %>   
-		
 </div>

@@ -1,0 +1,47 @@
+pt-BR:
+  menu:
+    favorites: Minhas listas favoritas
+    lists: Minhas listas
+    public: Outras listas
+    log_out: Sair
+    title: ListeTudo
+  tasks:
+    list_title: "Lista - %{list_name}"
+    title: Tarefas
+    task_title: Tarefa
+    remove: Excluir
+    remove_message: Quer mesmo deletar essa tarefinha?
+    edit: Editar
+    done: Feito!
+    new: +
+    new_placeholder: Adicione novas tarefas
+  lists:
+    title: Listas
+    new: +
+    new_placeholder: Adicione novas listas
+  favorite_lists:
+    title: Listas Favoritas
+    form_favorite_success: Lista adicionada as favoritas com sucesso!
+  generic_list:
+    task_name: Tarefa
+    privacy_type: Privacidade
+    favorite: Gostei dessa!
+    remove: Excluir
+    remove_message: Quer mesmo deletar essa lista? Todas as tarefas irão junto!
+    make_public: Tornar pública
+  public_lists:
+    title: Listas Públicas
+  links:
+    back: Voltar
+  general:
+    add_more_lists: Adicione algumas listas!
+    error:  
+  activerecord:
+    models: 
+      list: Lista
+      task: Tarefa
+    attributes:  
+      list:
+        name: Nome
+      task:
+        title: Nome  

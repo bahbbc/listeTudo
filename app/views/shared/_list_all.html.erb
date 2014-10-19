@@ -1,20 +1,20 @@
 <table class="table">
 			<tr>
-		    <th>Tarefa</th>
-		    <th>Privacidade</th>
+		    <th><%= t 'generic_list.task_name' %></th>
+		    <th><%= t 'generic_list.privacy_type' %></th>
 		    <th></th>
 		  </tr>
 		<% lists.each do |list| %>
 		  <tr>  
 				<td><%= link_to list.name, list_tasks_path(list) %>&nbsp;&nbsp
-						<%= link_to 'Favoritar', favorite_list_path(list), method: :patch, :class => "btn btn-default btn-xs" %>
+						<%= link_to (t 'generic_list.favorite'), favorite_list_path(list), method: :patch, :class => "btn btn-default btn-xs" %>
 				</td>
 				<td><%= list.private ? 'Privada' : 'Pública' %></td>
 				<% if list.user == current_user %>
-					<td><%= link_to 'Remover', list_path(list),
-	                  method: :delete, data: { confirm: 'Quer mesmo deletar essa lista? Todas as tarefas irão junto!' }, :class => "btn btn-default btn-xs" %>
+					<td><%= link_to (t 'generic_list.remove') , list_path(list),
+	                  method: :delete, data: { confirm: (t 'generic_list.remove_message') }, :class => "btn btn-default btn-xs" %>
 	            <%= link_to 'Editar', list_path(list), :class => "btn btn-default btn-xs" %>
-	            <%= link_to 'Tornar pública', list_path(list), method: :patch, :class => "btn btn-default btn-xs" %>
+	            <%= link_to (t 'generic_list.make_public'), list_path(list), method: :patch, :class => "btn btn-default btn-xs" %>
 	        </td>
 	      <% end %>  
 			</tr>

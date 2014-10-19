@@ -1,40 +1,42 @@
 <div class="jumbotron">   
-	<h1><%= @list.name %>
+	<h1><%= t 'tasks.list_title', list_name: @list.name %>
 		<br>
-		<small>Minhas tarefas</small>
+		<small><%= t 'tasks.title' %></small>
 	</h1>
 </div>
 <div>
-		<% if @tasks.present? %>
-			<table class="table">
-				<tr>
-			    <th>Tarefa</th>
-			    <th></th>
-			  </tr>
-			<% @tasks.each do |task| %>
-			  <tr>  
-			  	<% if task.status.present?  %>
-						<td><del><%= task.title %></del></td>
-					<% else%>
-						<td><%= task.title %></td>
-					<% end %>	
-					<% if @list.user == current_user %>
-						<td><%= link_to 'Remover', list_task_path(@list, task),
-		                  method: :delete, data: { confirm: 'Quer mesmo deletar essa tarefinha?' }, :class => "btn btn-default btn-xs" %>
-		            <%= link_to 'Editar', list_task_path(@list, task), :class => "btn btn-default btn-xs" %>
-		            <%= link_to 'Feito!', list_task_path(@list, task), method: :patch, :class => "btn btn-default btn-xs" %></td>   
-		      <% end %>       
-				</tr>
-			<% end %>	
-			</table>
-		<% else %>
-			<p>Adicione novas tarefas!</p>
+	<% if @tasks.present? %>
+		<table class="table">
+			<tr>
+		    <th><%= t 'tasks.task_title' %></th>
+		    <th></th>
+		  </tr>
+		<% @tasks.each do |task| %>
+		  <tr>  
+		  	<% if task.status.present?  %>
+					<td><del><%= task.title %></del></td>
+				<% else%>
+					<td><%= task.title %></td>
+				<% end %>	
+				<% if @list.user == current_user %>
+					<td><%= link_to (t 'tasks.remove'), list_task_path(@list, task),
+	                  method: :delete, data: { confirm: (t 'tasks.remove_message') }, class: "btn btn-default btn-xs" %>
+	            <%= link_to (t 'tasks.done'), list_task_path(@list, task), method: :patch, class: "btn btn-default btn-xs" %></td>   
+	      <% end %>       
+			</tr>
 		<% end %>	
-		<% if @list.user == current_user %>
-			<%= simple_form_for @task, :url => list_tasks_path(@list) do |f| %>
-				<%= f.input :title %>
-				<%= f.button :submit, "Adicionar tarefa", :class => "btn btn-default" %>
-			<% end %> 
-		<% end %>	
-
+		</table>
+	<% else %>
+		<p><%= t "tasks.new_placeholder" %></p>
+	<% end %>	
+	<% if @list.user == current_user %>
+		<%= simple_form_for @task, url: list_tasks_path(@list) do |f| %>
+			<div class="input-group">
+				<%= f.input_field :title, placeholder: (t 'tasks.new_placeholder'), class: "form-control" %>
+				<span class="input-group-btn">
+					<%= f.button :submit, (t 'tasks.new'), class: "btn btn-default" %>
+				</span>	
+			</div>	
+		<% end %> 
+	<% end %>	
 </div>
