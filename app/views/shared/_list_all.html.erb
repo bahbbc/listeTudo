@@ -6,7 +6,9 @@
 		  </tr>
 		<% lists.each do |list| %>
 		  <tr>  
-				<td><%= link_to list.name, list_tasks_path(list) %></td>
+				<td><%= link_to list.name, list_tasks_path(list) %>&nbsp;&nbsp
+						<%= link_to 'Favoritar', favorite_list_path(list), method: :patch, :class => "btn btn-default btn-xs" %>
+				</td>
 				<td><%= list.private ? 'Privada' : 'Pública' %></td>
 				<% if list.user == current_user %>
 					<td><%= link_to 'Remover', list_path(list),

@@ -9,7 +9,7 @@ class ListsController < ApplicationController
 		@list = current_user.lists.new(list_params)
 		@list.save
 
-		redirect_to list_tasks_url(@list)
+		redirect_to lists_url
 	end
 
 	def destroy

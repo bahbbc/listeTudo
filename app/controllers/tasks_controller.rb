@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 	
 	def index
-		@list = List.find(params[:list_id])
+		@list = list
 		@task = Task.new
 
 		if @list.user == current_user || @list.is_public_list
@@ -12,7 +12,7 @@ class TasksController < ApplicationController
 	end
 
 	def create   
- 		@list = List.find(params[:list_id])
+ 		@list = list
  		task = @list.tasks.new(task_params)
 
   	task.save
@@ -20,7 +20,7 @@ class TasksController < ApplicationController
 	end
 
 	def destroy
-		@list = List.find(params[:list_id])
+		@list = list
 	  task = current_user.tasks.find(params[:id])
 	  task.destroy
 
@@ -32,7 +32,7 @@ class TasksController < ApplicationController
 	end
 
 	def update
-		@list = List.find(params[:list_id])
+		@list = list
 		task = current_user.tasks.find(params[:id])
 		task.update(:status => true)
 
@@ -40,6 +40,11 @@ class TasksController < ApplicationController
 	end
 
 	private
+	
+		def list
+			@list ||= List.find(params[:list_id])
+		end
+
 		def task_params
 			params.require(:task).permit(:title, :status, :list_id)
 		end

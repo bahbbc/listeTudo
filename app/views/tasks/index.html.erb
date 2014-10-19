@@ -14,7 +14,7 @@
 			<% @tasks.each do |task| %>
 			  <tr>  
 			  	<% if task.status.present?  %>
-						<td><s><%= task.title %></s></td>
+						<td><del><%= task.title %></del></td>
 					<% else%>
 						<td><%= task.title %></td>
 					<% end %>	
