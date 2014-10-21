@@ -1,7 +1,7 @@
 <div class="jumbotron">   
 	<h1><%= t 'tasks.list_title', list_name: @list.name %>
 		<br>
-		<small><%= t 'tasks.title' %>&nbsp;&nbsp<%= link_to (t 'generic_list.favorite'), favorite_list_path(@list), method: :patch, class: "btn btn-default btn-default" %></small>
+		<small><%= t 'tasks.title' %>&nbsp;&nbsp<%= link_to (t 'generic_list.favorite'), favorite_list_path(@list), method: :patch, class: "btn btn-default" %></small>
 	</h1>
 </div>
 <div>
