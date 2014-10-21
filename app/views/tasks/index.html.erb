@@ -13,11 +13,7 @@
 		  </tr>
 		<% @tasks.each do |task| %>
 		  <tr>  
-		  	<% if task.status.present?  %>
-					<td><del><%= task.title %></del></td>
-				<% else%>
-					<td><%= task.title %></td>
-				<% end %>	
+		  	<td><%= status_list(task) %></td>
 				<% if @list.user == current_user %>
 					<td><%= link_to (t 'tasks.remove'), list_task_path(@list, task),
 	                  method: :delete, data: { confirm: (t 'tasks.remove_message') }, class: "btn btn-default btn-xs" %>

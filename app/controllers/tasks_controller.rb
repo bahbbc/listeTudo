@@ -1,26 +1,21 @@
 class TasksController < ApplicationController
 	
 	def index
-		@list = list
+		list
 		@task = Task.new
-
-		if @list.user == current_user || @list.is_public_list
-			@tasks = @list.tasks
-		else
-			head :bad_request
-		end	
+		@tasks = @list.tasks if @list.user == current_user || @list.is_public_list
 	end
 
 	def create   
- 		@list = list
- 		task = @list.tasks.new(task_params)
+ 		list
+ 		task = list.tasks.new(task_params)
 
   	task.save
 		redirect_to list_tasks_url(@list)
 	end
 
 	def destroy
-		@list = list
+		list
 	  task = current_user.tasks.find(params[:id])
 	  task.destroy
 
@@ -32,7 +27,7 @@ class TasksController < ApplicationController
 	end
 
 	def update
-		@list = list
+		list
 		task = current_user.tasks.find(params[:id])
 		task.update(:status => true)
 
