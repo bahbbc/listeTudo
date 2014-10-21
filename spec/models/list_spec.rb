@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe List, :type => :model do
 
 	before :each do
-		@public_list1 = create(:list, private: false)
-		@public_list2 = create(:list, private: false)
-		@private_list1 = create(:list)
-		private_list2 = create(:list)
+		jose = create(:user, email: 'jose@bananas.com.br')
+		@public_list1 = create(:list, private: false, user: jose)
+		@public_list2 = create(:list, private: false, user: jose)
+		@private_list1 = create(:list, user: jose)
+		private_list2 = create(:list, user: jose)
 	end
 
 	describe '#public_list' do
