@@ -3,7 +3,11 @@ class TasksController < ApplicationController
 	def index
 		list
 		@task = Task.new
-		@tasks = @list.tasks if @list.user == current_user || @list.is_public_list
+		if @list.user == current_user || @list.is_public_list
+			@tasks = @list.tasks 
+		else
+			head :unauthorized
+		end	
 	end
 
 	def create   
