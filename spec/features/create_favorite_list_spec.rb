@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Create Tasks" do
+feature "Create Favorite List" do
 
 	before :each do
 		@user = create(:user)
