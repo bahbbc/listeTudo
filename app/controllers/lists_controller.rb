@@ -16,7 +16,7 @@ class ListsController < ApplicationController
 		list = current_user.lists.find(params[:id])
 	  list.destroy
 
-	  redirect_to lists_url
+	  redirect_to :back
 	end
 
 	def update
