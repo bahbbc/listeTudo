@@ -5,6 +5,7 @@
 	</h1>
 </div>
 <div>
+	<p><%= t 'tasks.owner', owner: @list.user.email %></p>
 	<table class="table">
 		<% if @tasks.present? %>
 				<tr>

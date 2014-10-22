@@ -10,11 +10,12 @@ pt-BR:
     title: Tarefas
     task_title: Tarefa
     remove: Excluir
-    remove_message: Quer mesmo deletar essa tarefinha?
+    remove_message: Quer mesmo deletar essa tarefa?
     edit: Editar
     done: Feito!
     new: +
     new_placeholder: Adicione novas tarefas
+    owner: "Lista de %{owner}"
   lists:
     title: Listas
     new: +
