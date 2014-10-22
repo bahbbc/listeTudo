@@ -16,6 +16,7 @@ gem 'spring',        group: :development
 gem 'simple_form'
 gem 'devise'
 gem 'responders'
+gem 'rails_12factor', group: :production
 
 group :test do
   gem 'rspec-rails', '~> 3.0.0'
