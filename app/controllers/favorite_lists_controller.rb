@@ -6,8 +6,8 @@ class FavoriteListsController < ApplicationController
 	end
 
 	def create
-		current_user.favorite_lists.find_or_create_by(list_id: params[:id])	
-		redirect_to :back, notice: (t 'favorite_lists.form_favorite_success')
+		favorite_list = current_user.favorite_lists.find_or_create_by(list_id: params[:id])	
+		respond_with favorite_list, location: request.referer, notice: (t 'favorite_lists.form_favorite_success')
 	end
 
 	def update

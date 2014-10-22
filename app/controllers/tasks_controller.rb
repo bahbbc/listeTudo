@@ -15,7 +15,7 @@ class TasksController < ApplicationController
  		task = list.tasks.new(task_params)
 
   	task.save
-		redirect_to list_tasks_url(@list)
+		respond_with task, location: list_tasks_url(@list)
 	end
 
 	def destroy
@@ -23,11 +23,7 @@ class TasksController < ApplicationController
 	  task = current_user.tasks.find(params[:id])
 	  task.destroy
 
-	  redirect_to list_tasks_url(@list)
-	end
-
-	def edit 
-		@task = current_user.tasks.find(params[:id]) 
+	  respond_with nil, location: list_tasks_url(@list)
 	end
 
 	def update
@@ -35,7 +31,7 @@ class TasksController < ApplicationController
 		task = current_user.tasks.find(params[:id])
 		task.update(:status => true)
 
-		redirect_to list_tasks_url(@list)
+		respond_with task, location: list_tasks_url(@list)
 	end
 
 	private
