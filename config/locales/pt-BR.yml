@@ -46,7 +46,11 @@ pt-BR:
       list:
         name: Nome
       task:
-        title: Nome 
+        title: Nome
+      user:
+        email: E-mail
+        password: Senha
+        password_confirmation: Confirmação de senha
     flash:
       actions:
         create:
@@ -57,4 +61,14 @@ pt-BR:
           alert: "Verifique se está tudo certinho antes de continuar."
         destroy:
           notice: "%{resource_name} foi removida =("
-          alert: "Não foi possivel deletar %{resource_name}."     
+          alert: "Não foi possivel deletar %{resource_name}." 
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+            password:
+              too_short: "- Senha muito pequena"
+            password_confirmation:
+                confirmation: "- Senha fornecida não corresponde a confirmação de senha"
+    
