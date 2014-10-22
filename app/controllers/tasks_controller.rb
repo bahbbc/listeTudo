@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 		list
 		@task = Task.new
 		if @list.user == current_user || @list.is_public_list
-			@tasks = @list.tasks 
+			@tasks = @list.tasks.undone_order
 		else
 			head :unauthorized
 		end	
