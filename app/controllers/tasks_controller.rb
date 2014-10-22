@@ -12,10 +12,10 @@ class TasksController < ApplicationController
 
 	def create   
  		list
- 		task = list.tasks.new(task_params)
+ 		@task = list.tasks.new(task_params)
 
-  	task.save
-		respond_with task, location: list_tasks_url(@list)
+  	@task.save
+		respond_with @task, location: list_tasks_url(@list)
 	end
 
 	def destroy

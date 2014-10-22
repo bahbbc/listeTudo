@@ -12,21 +12,14 @@
 		    <th></th>
 		  </tr>
 		<% @tasks.each do |task| %>
-		  <tr>  
-		  	<td><%= status_list(task) %></td>
-				<% if @list.user == current_user %>
-					<td><%= link_to (t 'tasks.remove'), list_task_path(@list, task),
-	                  method: :delete, data: { confirm: (t 'tasks.remove_message') }, class: "btn btn-default btn-xs" %>
-	            <%= link_to (t 'tasks.done'), list_task_path(@list, task), method: :patch, class: task.status ? "btn btn-default btn-xs disabled" : "btn btn-default btn-xs" %></td>   
-	      <% end %>       
-			</tr>
+			  <%= render 'task_line', task: task %>
 		<% end %>	
 		</table>
 	<% else %>
 		<p><%= t "tasks.new_placeholder" %></p>
 	<% end %>	
 	<% if @list.user == current_user %>
-		<%= simple_form_for @task, url: list_tasks_path(@list) do |f| %>
+		<%= simple_form_for @task, url: list_tasks_path(@list), remote: true do |f| %>
 			<div class="input-group">
 				<%= f.input_field :title, placeholder: (t 'tasks.new_placeholder'), class: "form-control", autofocus: true %>
 				<span class="input-group-btn">

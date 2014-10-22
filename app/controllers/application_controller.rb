@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   protect_from_forgery with: :exception
 
-  respond_to :html, :json
+  respond_to :html, :js
   responders :flash
 end
