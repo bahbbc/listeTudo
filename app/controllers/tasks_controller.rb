@@ -15,7 +15,7 @@ class TasksController < ApplicationController
  		@task = list.tasks.new(task_params)
 
   	@task.save
-		respond_with @task, location: list_tasks_url(@list)
+		respond_with nil, location: list_tasks_url(@list)
 	end
 
 	def destroy

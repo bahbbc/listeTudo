@@ -9,7 +9,7 @@ class ListsController < ApplicationController
 		@list = current_user.lists.new(list_params)
 		@list.save
 
-		respond_with @list, location: lists_url
+		respond_with nil, location: lists_url
 	end
 
 	def destroy
