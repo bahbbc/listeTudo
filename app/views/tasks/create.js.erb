@@ -1,2 +1,2 @@
-$('.table tr:first').append("<%= j (render partial: 'task_line', locals: {task: @task})%>");
+$('.table').prepend("<%= j (render partial: 'task_line', locals: {task: @task})%>");
 $("input[type=text]").val("");

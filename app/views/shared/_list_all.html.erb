@@ -1,9 +1,4 @@
 <table class="table">
-			<tr>
-		    <th><%= t 'generic_list.task_name' %></th>
-		    <th><%= t 'generic_list.privacy_type' %></th>
-		    <th></th>
-		  </tr>
 		<% lists.each do |list| %>
 		  <tr>  
 				<td><%= link_to list.name, list_tasks_path(list) %></td>

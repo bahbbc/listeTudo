@@ -24,7 +24,7 @@ pt-BR:
     title: Listas Favoritas
     form_favorite_success: Lista adicionada as favoritas com sucesso!
   generic_list:
-    task_name: Tarefa
+    list_name: Listas
     privacy_type: Privacidade
     favorite: Gostei dessa!
     remove: Excluir

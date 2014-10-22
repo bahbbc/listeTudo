@@ -5,17 +5,18 @@
 	</h1>
 </div>
 <div>
+	<%= simple_form_for @list, url: lists_path do |f| %>
+		<div class="input-group">
+	    <%= f.input_field :name, placeholder: (t 'lists.new_placeholder'), class: "form-control"%>
+	    <span class="input-group-btn">
+	    	<%= f.button :submit, (t 'lists.new'), class: "btn btn-default" %>
+	    </span>
+		</div>
+	<% end %>
+	<br>
 	<% if @lists.present? %>
 		<%= render "shared/list_all", lists: @lists%>
 	<% else %>
 		<p><%= t 'general.add_more_lists' %></p>
-	<% end %>
-	  <%= simple_form_for @list, url: lists_path do |f| %>
-			<div class="input-group">
-		    <%= f.input_field :name, placeholder: (t 'lists.new_placeholder'), class: "form-control"%>
-		    <span class="input-group-btn">
-		    	<%= f.button :submit, (t 'lists.new'), class: "btn btn-default" %>
-		    </span>
-			</div>
-		<% end %>   
+	<% end %>   
 </div>

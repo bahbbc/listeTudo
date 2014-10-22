@@ -3,5 +3,5 @@ class Task < ActiveRecord::Base
 	 
 	validates :title, presence: true
 
-	scope :undone_order, -> {order ('status')}
+	scope :undone_order, -> {order ('status, created_at DESC')}
 end

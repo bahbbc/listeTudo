@@ -6,19 +6,6 @@
 </div>
 <div>
 	<p><%= t 'tasks.owner', owner: @list.user.email %></p>
-	<table class="table">
-		<% if @tasks.present? %>
-				<tr>
-			    <th><%= t 'tasks.task_title' %></th>
-			    <th></th>
-			  </tr>
-			<% @tasks.each do |task| %>
-				  <%= render 'task_line', task: task %>
-			<% end %>	
-		<% else %>
-			<p><%= t "tasks.new_placeholder" %></p>
-		<% end %>	
-	</table>
 	<% if @list.user == current_user %>
 		<%= simple_form_for @task, url: list_tasks_path(@list), remote: true do |f| %>
 			<div class="input-group">
@@ -29,4 +16,12 @@
 			</div>	
 		<% end %> 
 	<% end %>	
+	<br>
+	<table class="table">
+		<% if @tasks.present? %>			
+			<% @tasks.each do |task| %>
+				  <%= render 'task_line', task: task %>
+			<% end %>	
+		<% end %>	
+	</table>
 </div>
