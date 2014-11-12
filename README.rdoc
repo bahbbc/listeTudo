@@ -1,28 +1,13 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+App que lista as tarefas de um usuário com listas favoritas e públicas!
 
-Things you may want to cover:
+TODO futuro:
 
-* Ruby version
+* Colocar botão de editar tarefa
 
-* System dependencies
+* Colocar new relic
 
-* Configuration
+* Desabilitar o botão de like caso o carinha já tenha dado like na lista
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Corrigir layout mobile
