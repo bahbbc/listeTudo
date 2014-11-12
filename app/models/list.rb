@@ -7,6 +7,10 @@ class List < ActiveRecord::Base
 
 	scope :public_list, -> { where(private: false) }
 
+	def already_favorite(user)
+		self.favorite_lists.map(&:user).include?(user)
+	end
+
 	def is_public_list
 		self.private == false
 	end

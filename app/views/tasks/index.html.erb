@@ -1,7 +1,11 @@
 <div class="jumbotron">   
 	<h1><%= t 'tasks.list_title', list_name: @list.name %>
 		<br>
-		<small><%= t 'tasks.title' %>&nbsp;&nbsp<%= link_to (t 'generic_list.favorite'), favorite_list_path(@list), method: :patch, class: "btn btn-default" %></small>
+		<% if @list.already_favorite(current_user) %>
+			<small>Lista já favorita!</small>	
+		<% else %>
+			<small><%= t 'tasks.title' %>&nbsp;&nbsp<%= link_to (t 'generic_list.favorite'), favorite_list_path(@list), method: :patch, class: "btn btn-default" %></small>
+		<% end %>
 	</h1>
 </div>
 <div>
